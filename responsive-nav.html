@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="hamburger.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        
+        @media screen and (min-width:600px) {
+            nav {
+                background-color: #aaa;
+            }
+            .menu {
+                float: right;
+            }
+            .menu ul {
+                margin: 0;
+                padding: 0;
+            }
+            .menu li {
+                list-style: none;
+                float: left;
+            }
+            .menu a {
+                display: block;
+                padding: 15px 20px;
+                text-decoration: none;
+                color: #222;
+                font-family: helvetica;
+            }
+            .hamburger {
+                display: none;
+            }
+        }
+        
+        @media screen and (max-width:599px) {
+            nav {
+                background-color: #aaa;
+            }
+            .menu {
+/*                float: right;*/
+                display: none;
+            }
+            .menu ul {
+                margin: 0;
+                padding: 0;
+            }
+            .menu li {
+                list-style: none;
+/*                float: left;*/
+            }
+            .menu a {
+                display: block;
+                padding: 15px 20px;
+                text-decoration: none;
+                color: #222;
+                font-family: helvetica;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $(".hamburger").click(function () {
+                $(this).toggleClass("hamburger-x");
+                $(this).next().slideToggle();
+            });
+            $(window).resize(function(){
+                var w = $(window).width();
+//                console.log(w);
+                if(w>600){
+                    $(".menu").show();
+                }else{
+                    $(".menu").hide();
+                    $(".hamburger").removeClass("hamburger-x");
+                }
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <nav class="clearfix">
+        <div class="hamburger"><span></span></div>
+        <div class="menu">
+            <ul>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">WORKS</a></li>
+                <li><a href="#">SERVICE</a></li>
+                <li><a href="#">BLOG</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+</body>
+
+</html>
